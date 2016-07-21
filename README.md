@@ -54,7 +54,8 @@ For each probability (high, medium, low) you have to configure 2 things:
 
 Step 4: create scheduled jobs
 -----------------------------
-Create for each probability a scheduled job.
+Create for each propability a scheduled job.
+>>>>>>> 2c2543c034faeac4d197933d011c8bcaa4dcbc3a
 Call the API entity: xdd
 Call the API action: run
 Specify the API parameter: probability=high
