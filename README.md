@@ -25,8 +25,8 @@ For example, one might create a rule that if the first name, last name, and mobi
 
 Setup
 =====
-
 Step 1: create groups
+---------------------
 Because the possible duplicates will be automatically stored in a group, you have to create these groups first.
 
 Create three groups, one for each probability.
@@ -36,6 +36,7 @@ http://[your-civicrm-website]/civicrm/group/add?reset=1
 
 
 Step 2: create de-dupe rules
+----------------------------
 Go to http://[your-civicrm-website]/civicrm/contact/deduperules?reset=1 and create three rules. One for each probability.
 
 Please note that at this point, only Individual Rules of type General are supported.
@@ -44,19 +45,40 @@ Please note that at this point, only Individual Rules of type General are suppor
 
 
 Step 3: configure the extension
+-------------------------------
 Go to http://[your-civicrm-website]/civicrm/admin/setting/xdd to configure the extension.
 
 For each probability (high, medium, low) you have to configure 2 things:
 - which de-dupe rule to use
 - which group to store the contacts in
 
-You can create de-dupe rules using the standard CiviCRM rules.
+Step 4: create scheduled jobs
+-----------------------------
+Create for each propability a scheduled job.
+Call the API entity: xdd
+Call the API action: run
+Specify the API parameter: probability=high
+or: probability=medium
+or: probability=low
 
-Only Individual Rules of type General can be used by this extension.
+(you might want to start with just one scheduled job, to test the whole process)
 
-The settings for this extension can be found here:
+Automatic vs Manual Processing
+==============================
+The scheduled job (see step 4 in previous section) does the time-consuming task of finding duplicates. This is the automatic part of the process.
+Now the manual process starts.
 
+Go to the de-dupe rules screen http://[your-civicrm-website]/civicrm/contact/deduperules?reset=1 and select the de-dupe rule associated with a specific probability.
+Click on "Use Rule" and select the associated group in the next screen.
+Now you can merge contacts or mark them as "not a duplicate".
 
+TODO
+====
+This extension is still in prototype phase.
+Things to do, ideas...
+- in Settings form: before setting defaults, check the rules and groups still exist (a user could have deleted them)
+- in Settings form: validate the chosen rules. Can one chose the same rule or group for different probabilities?
+- in API: after getting the rule and group id's, check they still exist (a user could have deleted them)
 
 
 
