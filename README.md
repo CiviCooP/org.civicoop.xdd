@@ -15,9 +15,9 @@ Probability
 By probability, we mean the likelihood that two contacts are duplicates.
 
 As a starting point, we defined 3 probabilities:
-1) High
-2) Medium
-3) Low
+1. High
+2. Medium
+3. Low
 
 It is up to the user to create CiviCRM de-dupe rules and link them to one of the three probabilities.
 
@@ -54,7 +54,7 @@ For each probability (high, medium, low) you have to configure 2 things:
 
 Step 4: create scheduled jobs
 -----------------------------
-Create for each propability a scheduled job.
+Create for each probability a scheduled job.
 Call the API entity: xdd
 Call the API action: run
 Specify the API parameter: probability=high
